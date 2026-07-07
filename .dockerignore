@@ -1,0 +1,28 @@
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Notebooks & data
+notebooks/
+data/
+*.h5
+*.keras
+
+# IDE
+.vscode/
+.idea/
+
+# Docs
+README.md
+*.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
