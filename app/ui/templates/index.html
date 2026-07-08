@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title %}EcoSort — L'IA qui vous aide à trier vos déchets{% endblock %}
+
+{% block content %}
+<div class="app-shell" id="app">
+
+  <!-- ============ ACCUEIL ============ -->
+  <section class="view view-home is-active" data-view="home">
+    <div class="home-hero-frame">
+      <span class="deco-blob deco-blob-teal home-deco-1" aria-hidden="true"></span>
+      <span class="deco-blob deco-blob-amber home-deco-2" aria-hidden="true"></span>
+      <span class="deco-blob deco-blob-coral home-deco-3" aria-hidden="true"></span>
+    <div class="home-hero">
+      <div class="home-hero-carousel" id="hero-carousel">
+        <div class="home-hero-bg is-active" style="background-image: url('{{ url_for('static', filename='img/poubelles.jpeg') }}');"></div>
+        <div class="home-hero-bg" style="background-image: url('{{ url_for('static', filename='img/poubelles2.jpeg') }}');"></div>
+      </div>
+      <div class="home-hero-scrim"></div>
+
+      <div class="home-card">
+        <div class="home-card-top">
+          <p class="eyebrow"><i data-lucide="sparkles"></i> Tri sélectif assisté par IA</p>
+          <a href="{{ url_for('statistiques') }}" class="home-card-kpis">
+            <span class="mini-kpi"><strong>{{ "{:,}".format(stats.total_analyses).replace(",", " ") }}</strong> produits</span>
+            <span class="mini-kpi mini-kpi-accent"><strong>{{ stats.accuracy }} %</strong> précision</span>
+          </a>
+        </div>
+
+        <div class="home-card-center">
+          <h1 class="home-title">EcoSort</h1>
+          <p class="home-lead">L'IA qui vous aide à <span class="accent-word">trier</span> vos déchets.</p>
+
+          <form class="search-form" id="search-form" autocomplete="off">
+            <div class="search-input-wrap">
+              <i data-lucide="search"></i>
+              <input
+                type="text" id="search-input" name="keyword"
+                placeholder="Rechercher un produit… (ex. smartphone, bouteille, carton)"
+                minlength="2" required autofocus
+              >
+            </div>
+            <button type="submit" class="btn btn-primary" id="search-submit">
+              <span class="btn-label">Rechercher</span>
+              <i data-lucide="arrow-right" class="btn-icon-idle"></i>
+              <i data-lucide="loader-2" class="btn-icon-loading" hidden></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="home-card-bottom">
+          <div class="quick-tries">
+            <span class="quick-tries-label">Exemples</span>
+            <div class="quick-chips">
+              <button type="button" class="quick-chip" data-fill="bouteille d'eau"><i data-lucide="cup-soda"></i> Bouteille d'eau</button>
+              <button type="button" class="quick-chip" data-fill="smartphone"><i data-lucide="smartphone"></i> Téléphone</button>
+              <button type="button" class="quick-chip" data-fill="carton de colis"><i data-lucide="package"></i> Carton Amazon</button>
+              <button type="button" class="quick-chip" data-fill="bouteille en verre"><i data-lucide="wine"></i> Bouteille en verre</button>
+            </div>
+          </div>
+
+          <div class="bin-legend" aria-label="Les 5 catégories de tri">
+            <span class="bin-dot" style="--dot:#FACC15;">Jaune</span>
+            <span class="bin-dot" style="--dot:#22C55E;">Verte</span>
+            <span class="bin-dot" style="--dot:#2563EB;">Bleue</span>
+            <span class="bin-dot" style="--dot:#6B7280;">D3E</span>
+            <span class="bin-dot" style="--dot:#8B5E3C;">Marron</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ============ RECHERCHE EN COURS ============ -->
+  <section class="view view-searching" data-view="searching">
+    <div class="center-card">
+      <div class="spin-ring"><i data-lucide="loader-2"></i></div>
+      <p class="center-label" id="searching-label">Recherche sur Jumia…</p>
+      <div class="progress-track"><div class="progress-bar" id="search-progress"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ RÉSULTATS JUMIA ============ -->
+  <section class="view view-results" data-view="results">
+    <div class="results-inner">
+      <button type="button" class="back-link" id="back-to-home"><i data-lucide="arrow-left"></i> Nouvelle recherche</button>
+      <p class="eyebrow">Résultats pour</p>
+      <h2 class="results-title" id="results-keyword">—</h2>
+
+      <p class="demo-banner" id="demo-banner" hidden>
+        <i data-lucide="info"></i> Mode démonstration hors-ligne : catalogue local.
+      </p>
+      <p class="empty-state" id="empty-state" hidden>
+        <i data-lucide="search-x"></i> <span id="empty-state-text">Aucun résultat. Essayez un autre mot-clé.</span>
+      </p>
+
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ ANALYSE IA ============ -->
+  <section class="view view-analyzing" data-view="analyzing">
+    <div class="center-card">
+      <div class="analyzing-orb"><i data-lucide="brain-circuit"></i></div>
+      <p class="center-label" id="analyzing-label">Identification…</p>
+      <div class="analyzing-dots">
+        <span class="step-dot" data-step="0"></span>
+        <span class="step-dot" data-step="1"></span>
+        <span class="step-dot" data-step="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RÉSULTAT (plein écran coloré) ============ -->
+  <section class="view view-result" data-view="result" id="result-view">
+    <button type="button" class="result-close" id="result-close" aria-label="Nouvelle recherche">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="result-inner">
+      <div class="result-icon-wrap" id="result-icon-wrap"><i data-lucide="recycle"></i></div>
+      <p class="result-badge" id="result-badge"><i data-lucide="check-circle-2"></i> Recyclable</p>
+      <h2 class="result-title" id="result-title">Poubelle jaune</h2>
+      <p class="result-detail" id="result-detail">Ce produit est principalement en plastique.</p>
+
+      <div class="result-advice">
+        <i data-lucide="lightbulb"></i>
+        <div>
+          <p class="advice-label">Conseil</p>
+          <p class="advice-text" id="advice-text">—</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-on-color" id="result-restart">
+        Nouvelle recherche <i data-lucide="rotate-ccw"></i>
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<template id="product-card-template">
+  <article class="product-card">
+    <div class="product-image"><img loading="lazy"></div>
+    <h3 class="product-name"></h3>
+    <p class="product-price"></p>
+    <button type="button" class="btn btn-primary btn-block choose-btn">
+      Choisir <i data-lucide="arrow-right"></i>
+    </button>
+  </article>
+</template>
+{% endblock %}
