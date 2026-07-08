@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Bouteille d'eau plastique 1.5L",
+    "price": "500 FCFA",
+    "image": "/static/img/products/bouteille-plastique.png",
+    "link": "#",
+    "keywords": ["bouteille", "eau", "plastique", "soda"]
+  },
+  {
+    "name": "Canette de boisson gazeuse 33cl",
+    "price": "400 FCFA",
+    "image": "/static/img/products/canette-boisson.png",
+    "link": "#",
+    "keywords": ["canette", "boisson", "soda", "metal"]
+  },
+  {
+    "name": "Boîte de conserve de tomates",
+    "price": "650 FCFA",
+    "image": "/static/img/products/boite-conserve.png",
+    "link": "#",
+    "keywords": ["boite", "conserve", "tomates", "metal"]
+  },
+  {
+    "name": "Carton de colis de livraison",
+    "price": "—",
+    "image": "/static/img/products/carton-colis.png",
+    "link": "#",
+    "keywords": ["carton", "colis", "cardboard"]
+  },
+  {
+    "name": "Bouteille de vin en verre",
+    "price": "4500 FCFA",
+    "image": "/static/img/products/bouteille-verre.png",
+    "link": "#",
+    "keywords": ["bouteille", "vin", "verre", "glass"]
+  },
+  {
+    "name": "Pot de confiture de fraise",
+    "price": "1800 FCFA",
+    "image": "/static/img/products/pot-confiture.png",
+    "link": "#",
+    "keywords": ["pot", "confiture", "verre", "bocal"]
+  },
+  {
+    "name": "Journal du jour",
+    "price": "300 FCFA",
+    "image": "/static/img/products/journal.png",
+    "link": "#",
+    "keywords": ["journal", "papier", "presse"]
+  },
+  {
+    "name": "Magazine mensuel économie",
+    "price": "1200 FCFA",
+    "image": "/static/img/products/magazine.png",
+    "link": "#",
+    "keywords": ["magazine", "papier", "revue"]
+  },
+  {
+    "name": "Smartphone Android 128 Go",
+    "price": "89 000 FCFA",
+    "image": "/static/img/products/smartphone.png",
+    "link": "#",
+    "keywords": ["smartphone", "telephone", "electronique"]
+  },
+  {
+    "name": "Écouteurs sans fil Bluetooth",
+    "price": "12 500 FCFA",
+    "image": "/static/img/products/ecouteurs.png",
+    "link": "#",
+    "keywords": ["ecouteurs", "casque", "bluetooth", "electronique"]
+  },
+  {
+    "name": "Sachet plastique souple",
+    "price": "—",
+    "image": "/static/img/products/sachet-plastique.png",
+    "link": "#",
+    "keywords": ["sachet", "sac", "plastique souple"]
+  },
+  {
+    "name": "Restes alimentaires du repas",
+    "price": "—",
+    "image": "/static/img/products/restes-alimentaires.png",
+    "link": "#",
+    "keywords": ["restes", "alimentaires", "nourriture", "dechets"]
+  }
+]

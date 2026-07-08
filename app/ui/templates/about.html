@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}À propos — EcoSort{% endblock %}
+
+{% block content %}
+<section class="page page-about">
+  <div class="page-inner">
+    <p class="eyebrow"><i data-lucide="info"></i> Le projet</p>
+    <h1 class="page-title">À propos d'<span class="accent-word is-amber">EcoSort</span></h1>
+    <p class="page-lead">
+      EcoSort est une application web pédagogique qui combine scraping e-commerce et Deep Learning
+      pour aider à identifier la bonne consigne de tri d'un produit courant.
+    </p>
+
+    <div class="about-card">
+      <h2>Comment ça marche</h2>
+      <div class="steps-grid">
+        <article class="step-card reveal">
+          <span class="step-num">01</span>
+          <i data-lucide="search"></i>
+          <h3>Recherche</h3>
+          <p>Le produit saisi est recherché sur Jumia (avec repli automatique sur un catalogue de démonstration).</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">02</span>
+          <i data-lucide="mouse-pointer-click"></i>
+          <h3>Sélection</h3>
+          <p>L'utilisateur choisit le produit correspondant parmi les résultats affichés.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">03</span>
+          <i data-lucide="brain-circuit"></i>
+          <h3>Analyse IA</h3>
+          <p>Un modèle de Deep Learning (MobileNetV2) détermine la catégorie de tri.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">04</span>
+          <i data-lucide="paint-bucket"></i>
+          <h3>Résultat coloré</h3>
+          <p>L'écran se colore selon la poubelle correspondante — impossible de se tromper.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h2>Stack technique</h2>
+        <ul class="tech-list">
+          <li><i data-lucide="brain-circuit"></i> TensorFlow / Keras — CNN &amp; Transfer Learning</li>
+          <li><i data-lucide="globe"></i> BeautifulSoup / Requests — scraping Jumia</li>
+          <li><i data-lucide="layout-panel-left"></i> Flask — interface web</li>
+          <li><i data-lucide="container"></i> Docker — containerisation</li>
+        </ul>
+      </div>
+
+      <div class="about-card reveal">
+        <h2>Équipe</h2>
+        <ul class="team-list">
+          {% for member in team %}
+          <li>
+            <span class="team-avatar">{{ member.name[0] }}</span>
+            <span>
+              <strong>{{ member.name }}</strong>
+              <small>{{ member.role }}</small>
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-primary about-cta">
+      <i data-lucide="code-2"></i> Voir le dépôt GitHub
+    </a>
+  </div>
+</section>
+{% endblock %}
