@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Statistiques — EcoSort{% endblock %}
+
+{% block content %}
+<section class="page page-stats">
+  <div class="page-inner">
+    <p class="eyebrow"><i data-lucide="bar-chart-3"></i> En chiffres</p>
+    <h1 class="page-title">Statistiques</h1>
+    <p class="page-lead">Un aperçu de l'activité du modèle — données de démonstration.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card reveal">
+        <span class="kpi-icon"><i data-lucide="scan-search"></i></span>
+        <p class="kpi-value" data-count="{{ stats.total_analyses }}">0</p>
+        <p class="kpi-label">Produits analysés</p>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="kpi-icon"><i data-lucide="target"></i></span>
+        <p class="kpi-value" data-count="{{ stats.accuracy }}" data-decimals="1">0</p>
+        <p class="kpi-label">Précision du modèle (%)</p>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="kpi-icon"><i data-lucide="layers"></i></span>
+        <p class="kpi-value" data-count="5">0</p>
+        <p class="kpi-label">Catégories de tri</p>
+      </div>
+    </div>
+
+    <div class="breakdown-card reveal">
+      <h2>Répartition par catégorie</h2>
+      <div class="breakdown-list">
+        {% for item in stats.breakdown %}
+        <div class="breakdown-row">
+          <span class="breakdown-label">
+            <span class="breakdown-dot" style="--dot:{{ item.color }};"></span>
+            {{ item.label }}
+          </span>
+          <div class="breakdown-track">
+            <div class="breakdown-bar" style="--bar-color:{{ item.color }};" data-percent="{{ item.percent }}"></div>
+          </div>
+          <span class="breakdown-percent">{{ item.percent }}%</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

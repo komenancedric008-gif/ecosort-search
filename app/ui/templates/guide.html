@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Guide de tri — EcoSort{% endblock %}
+
+{% block content %}
+<section class="page page-guide">
+  <div class="page-inner">
+    <p class="eyebrow"><i data-lucide="book-open"></i> Référentiel officiel</p>
+    <h1 class="page-title">Guide de <span class="accent-word is-teal">tri</span></h1>
+    <p class="page-lead">Les 5 consignes de tri, et ce qu'il faut vraiment mettre dans chacune.</p>
+
+    <div class="guide-grid">
+      <article class="guide-card reveal" style="--bin-color:#FACC15;">
+        <span class="guide-swatch"><i data-lucide="package"></i></span>
+        <h2>Poubelle jaune</h2>
+        <p class="guide-subtitle">Plastique, métal, carton</p>
+        <div class="guide-cols">
+          <div class="guide-col guide-col-yes">
+            <p><i data-lucide="check"></i> À mettre</p>
+            <ul>
+              <li>Bouteilles et flacons plastique</li>
+              <li>Canettes et boîtes de conserve</li>
+              <li>Cartons et briques alimentaires</li>
+              <li>Emballages métalliques</li>
+            </ul>
+          </div>
+          <div class="guide-col guide-col-no">
+            <p><i data-lucide="x"></i> À éviter</p>
+            <ul>
+              <li>Films et sacs plastique souples</li>
+              <li>Polystyrène</li>
+              <li>Objets composites (jouets, etc.)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="guide-card reveal" style="--bin-color:#22C55E;">
+        <span class="guide-swatch"><i data-lucide="wine"></i></span>
+        <h2>Poubelle verte</h2>
+        <p class="guide-subtitle">Verre d'emballage</p>
+        <div class="guide-cols">
+          <div class="guide-col guide-col-yes">
+            <p><i data-lucide="check"></i> À mettre</p>
+            <ul>
+              <li>Bouteilles en verre</li>
+              <li>Bocaux et pots de confiture</li>
+              <li>Flacons en verre</li>
+            </ul>
+          </div>
+          <div class="guide-col guide-col-no">
+            <p><i data-lucide="x"></i> À éviter</p>
+            <ul>
+              <li>Vaisselle et verre culinaire cassés</li>
+              <li>Ampoules et néons</li>
+              <li>Miroirs et vitres</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="guide-card reveal" style="--bin-color:#2563EB;">
+        <span class="guide-swatch"><i data-lucide="newspaper"></i></span>
+        <h2>Poubelle bleue</h2>
+        <p class="guide-subtitle">Papiers graphiques</p>
+        <div class="guide-cols">
+          <div class="guide-col guide-col-yes">
+            <p><i data-lucide="check"></i> À mettre</p>
+            <ul>
+              <li>Journaux et magazines</li>
+              <li>Prospectus et enveloppes</li>
+              <li>Cahiers et livres</li>
+            </ul>
+          </div>
+          <div class="guide-col guide-col-no">
+            <p><i data-lucide="x"></i> À éviter</p>
+            <ul>
+              <li>Papier peint</li>
+              <li>Papier gras ou souillé</li>
+              <li>Mouchoirs et essuie-tout</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="guide-card reveal" style="--bin-color:#6B7280;">
+        <span class="guide-swatch"><i data-lucide="cpu"></i></span>
+        <h2>Bac électronique (D3E)</h2>
+        <p class="guide-subtitle">Appareils électriques et électroniques</p>
+        <div class="guide-cols">
+          <div class="guide-col guide-col-yes">
+            <p><i data-lucide="check"></i> À mettre</p>
+            <ul>
+              <li>Smartphones, chargeurs, écouteurs</li>
+              <li>Petit électroménager</li>
+              <li>Piles et batteries (à part)</li>
+            </ul>
+          </div>
+          <div class="guide-col guide-col-no">
+            <p><i data-lucide="x"></i> À éviter</p>
+            <ul>
+              <li>Ne jamais jeter avec les ordures ménagères</li>
+              <li>Ne pas ouvrir les batteries</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="guide-card reveal" style="--bin-color:#8B5E3C;">
+        <span class="guide-swatch"><i data-lucide="trash-2"></i></span>
+        <h2>Poubelle marron / noire</h2>
+        <p class="guide-subtitle">Déchets non recyclables</p>
+        <div class="guide-cols">
+          <div class="guide-col guide-col-yes">
+            <p><i data-lucide="check"></i> À mettre</p>
+            <ul>
+              <li>Restes alimentaires</li>
+              <li>Sachets plastique souples</li>
+              <li>Produits d'hygiène</li>
+            </ul>
+          </div>
+          <div class="guide-col guide-col-no">
+            <p><i data-lucide="x"></i> À éviter</p>
+            <ul>
+              <li>Tout ce qui est recyclable ailleurs</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-primary guide-cta">
+      Essayer avec un produit <i data-lucide="arrow-right"></i>
+    </a>
+  </div>
+</section>
+{% endblock %}
