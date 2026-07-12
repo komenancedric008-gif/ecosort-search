@@ -218,6 +218,8 @@ p{ margin: 0; }
 .btn-block{ width: 100%; }
 .btn-on-color{ background: rgba(255,255,255,0.92); color: #111827; box-shadow: var(--shadow-md); }
 .btn-on-color:hover{ transform: translateY(-2px) scale(1.02); }
+.btn-secondary{ background: transparent; color: var(--gray); border-color: var(--border); }
+.btn-secondary:hover{ color: var(--text); border-color: var(--gray-light); transform: translateY(-2px); }
 
 /* =========================================================
    APP SHELL — machine à vues (single page)
@@ -239,14 +241,16 @@ p{ margin: 0; }
    ACCUEIL — carousel photo (poubelles) + carte glass
    Dimensionné pour tenir dans un seul écran, sans défilement.
    ========================================================= */
-.view-home{ padding-top: 12px; padding-bottom: 12px; }
-.home-hero-frame{ position: relative; width: 100%; max-width: 1100px; margin-inline: auto; }
+.view-home{ padding-top: 12px; padding-bottom: 0; }
+.view.view-home.is-active{ justify-content: flex-start; }
+.view.view-home.is-active .home-hero-frame{ flex: 1 1 auto; display: flex; min-height: 0; }
+.home-hero-frame{ position: relative; width: 100%; max-width: 1320px; margin-inline: auto; }
 .home-deco-1{ top: -30px; left: -30px; width: 160px; height: 160px; }
 .home-deco-2{ top: -20px; right: -40px; width: 120px; height: 120px; animation-delay: -4s; }
 .home-deco-3{ bottom: -40px; left: 18%; width: 150px; height: 150px; animation-delay: -8s; }
 .home-hero{
-  position: relative; width: 100%; max-width: 1100px; margin-inline: auto;
-  min-height: min(62vh, 540px); border-radius: 26px; overflow: hidden;
+  position: relative; width: 100%; max-width: 1320px; margin-inline: auto;
+  flex: 1 1 auto; border-radius: 26px; overflow: hidden;
   display: flex; align-items: center; justify-content: center; padding: 28px 24px;
 }
 .home-hero-carousel{ position: absolute; inset: 0; }
@@ -398,9 +402,12 @@ p{ margin: 0; }
 }
 .product-image img{ width: 100%; height: 100%; object-fit: cover; transition: transform .45s var(--ease); }
 .product-card:hover .product-image img{ transform: scale(1.06); }
+.product-image.no-image{ display: flex; align-items: center; justify-content: center; }
+.product-image.no-image i{ width: 34px; height: 34px; color: var(--gray); }
 .product-name{ font-size: 1rem; margin-bottom: 6px; font-weight: 600; }
 .product-price{ color: var(--primary-dark); font-weight: 700; font-size: 0.92rem; margin-bottom: 16px; }
 .choose-btn.is-loading{ opacity: .7; cursor: progress; }
+.jumia-link{ margin-top: 10px; }
 
 /* =========================================================
    RÉSULTAT — plein écran coloré selon la poubelle
