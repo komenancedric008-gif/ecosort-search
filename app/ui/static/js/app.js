@@ -252,12 +252,34 @@ document.addEventListener("DOMContentLoaded", () => {
     produits.forEach((produit, index) => {
       const node = cardTemplate.content.firstElementChild.cloneNode(true);
       node.style.animationDelay = `${index * 70}ms`;
+      const imgWrap = node.querySelector(".product-image");
       const img = node.querySelector("img");
-      img.src = produit.image;
-      img.alt = produit.name;
+
+      function showImageFallback() {
+        imgWrap.classList.add("no-image");
+        imgWrap.innerHTML = '<i data-lucide="image-off"></i>';
+        if (window.lucide) lucide.createIcons();
+      }
+
+      if (produit.image) {
+        img.alt = produit.name;
+        img.addEventListener("error", showImageFallback, { once: true });
+        img.src = produit.image;
+      } else {
+        showImageFallback();
+      }
+
       node.querySelector(".product-name").textContent = produit.name;
       node.querySelector(".product-price").textContent = produit.price;
       node.querySelector(".choose-btn").addEventListener("click", (e) => chooseProduct(produit, e.currentTarget));
+
+      const jumiaLink = node.querySelector(".jumia-link");
+      if (produit.link && produit.link !== "#") {
+        jumiaLink.href = produit.link;
+      } else {
+        jumiaLink.remove();
+      }
+
       productGrid.appendChild(node);
     });
 
