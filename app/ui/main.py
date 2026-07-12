@@ -99,7 +99,16 @@ def search():
     if not keyword:
         return jsonify({"error": "Merci de saisir le nom d'un produit à rechercher.", "produits": []}), 400
 
-    produits = search_products(keyword, max_results=6)
+    try:
+        produits = search_products(keyword, max_results=6)
+    except Exception as exc:
+        logger.error("Echec de la recherche Jumia pour %r : %s", keyword, exc)
+        return jsonify({
+            "error": "Jumia est temporairement injoignable. Réessayez dans quelques instants.",
+            "produits": [],
+            "keyword": keyword,
+        }), 503
+
     source = produits[0].get("source", "jumia") if produits else "demo"
     return jsonify({"produits": produits, "keyword": keyword, "source": source})
 
