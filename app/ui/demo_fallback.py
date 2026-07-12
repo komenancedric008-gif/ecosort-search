@@ -61,6 +61,16 @@ CATEGORY_MAPPING = {
 ELECTRONIC_KEYWORDS = [
     "smartphone", "telephone", "téléphone", "chargeur", "ecouteur", "écouteur",
     "casque", "batterie", "montre connectee", "mixeur", "ordinateur", "tablette",
+    # Marques et modèles fréquents sur Jumia (résultats de scraping réels,
+    # au vocabulaire plus riche que le catalogue de démonstration).
+    "iphone", "samsung", "galaxy", "xiaomi", "redmi", "tecno", "infinix",
+    "itel", "huawei", "oppo", "realme", "nokia", "poco", "gsm", "phone",
+    "laptop", "pc portable", "imprimante", "console", "manette",
+    "appareil photo", "camera", "caméra", "enceinte", "haut-parleur",
+    "clavier", "souris", "routeur", "modem", "disque dur", "cle usb",
+    "clé usb", "power bank", "powerbank", "televiseur", "téléviseur", " tv ",
+    "climatiseur", "refrigerateur", "réfrigérateur", "frigo", "micro-onde",
+    "aspirateur", "ventilateur",
 ]
 
 KEYWORD_FALLBACK = {
