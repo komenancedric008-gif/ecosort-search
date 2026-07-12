@@ -25,6 +25,9 @@ data/
 *.pkl
 *.joblib
 
+# Exception : le modèle final entraîné est versionné (22 MB, acceptable)
+!app/model/modele_eco_sort.keras
+
 # ===== Logs & outputs =====
 logs/
 *.log
