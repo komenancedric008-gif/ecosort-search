@@ -1,8 +1,9 @@
 """
-scraper/jumia_scraper.py
+scraper/jumia_scraper.py 
 
-Module de scraping de la plateforme Jumia pour le projet
-EcoSort-Search.
+Module de scraping de la plateforme Jumia pour le projet 
+EcoSort-Search. (2éme version)
+
 
 Responsable : kouassi Neville 
 
