@@ -43,7 +43,6 @@ except ImportError:
 try:
     from app.model.inference import predict_category
     logger.info("Module d'inférence réel chargé (app.model.inference).")
-    _USING_REAL_MODEL = True
 except ImportError:
     from app.ui.demo_fallback import predict_category_demo as predict_category
     logger.warning(
@@ -51,13 +50,6 @@ except ImportError:
         "mots-clés (app/ui/demo_fallback.py) en attendant la fusion de la "
         "branche feature/deep-learning."
     )
-    _USING_REAL_MODEL = False
-
-# app.model.inference (Cedrick) ne renvoie que bin/color/label/matiere/
-# confidence/source : les champs uniquement UI (icon, text_on, conseil,
-# recyclable) attendus par app.js viennent du référentiel CATEGORY_MAPPING,
-# indexé par les mêmes clés matière (plastic, glass, metal, ...) que le CNN.
-from app.ui.demo_fallback import CATEGORY_MAPPING
 
 
 STATS = {
@@ -131,21 +123,6 @@ def predict():
         return jsonify({"error": "product_name est requis"}), 400
 
     category = predict_category(image_url, product_name)
-
-    if _USING_REAL_MODEL:
-        # Le modèle réel ne fournit pas les champs de présentation : on les
-        # complète depuis CATEGORY_MAPPING sans écraser bin/color/label
-        # (autorité du CNN) ni confidence/source.
-        ui_meta = CATEGORY_MAPPING.get(category.get("matiere"), CATEGORY_MAPPING["trash"])
-        category = {
-            **category,
-            "matiere": ui_meta["matiere"],
-            "icon": ui_meta["icon"],
-            "text_on": ui_meta["text_on"],
-            "recyclable": ui_meta["recyclable"],
-            "conseil": ui_meta["conseil"],
-        }
-
     return jsonify(category)
 
 
